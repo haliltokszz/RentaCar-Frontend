@@ -1,0 +1,161 @@
+<h1 class="display-6 fw-bold mb-3">Car Add</h1>
+<div class="card p-2 rounded-2 shadow-xl">
+  <div class="card-body shadow">
+    <form [formGroup]="carAddForm">
+      <div class="form-group mb-3">
+        <label for="car-name-input" class="fw-bold mb-3">Car Name</label>
+        <input
+          type="text"
+          id="car-name-input"
+          formControlName="name"
+          class="form-control"
+          placeholder="Car Name"
+        />
+      </div>
+
+      <div class="row">
+        <div id="brand-input" class="col-md mb-3">
+          <label
+            for="brand-input"
+            class="d-flex align-content-center col-12 p-0"
+          >
+            <span class="fw-bold d-flex align-items-center">Brand</span>
+          </label>
+          <div class="form-floating input-group mt-2 col-12 p-0 mb-3">
+            <input
+              type="text"
+              formControlName="brandFilterText"
+              class="form-control col-9"
+              id="search-brand-input"
+              placeholder="Brand Name"
+            />
+            <label
+              for="search-brand-input input-group-append"
+              class="col-3 text-muted mx-2 p-0"
+            >
+              <i class="fas fa-search fa-lg">
+                <span>Search</span>
+              </i></label
+            >
+          </div>
+          <select class="form-select" size="5" formControlName="brandId">
+            <option
+              *ngFor="
+                let brand of brands
+                  | filterBrand: carAddForm.value['brandFilterText']
+              "
+              value="{{ brand.id }}"
+            >
+              {{ brand.name }}
+            </option>
+          </select>
+        </div>
+
+        <div id="color-input" class="col-md mb-3">
+          <label
+              for="color-input"
+              class="d-flex align-content-center col-12 p-0"
+            >
+              <span class="fw-bold d-flex align-items-center"
+                >Color</span
+              ></label
+            >
+          <div class="form-floating input-group mt-2 col-12 p-0 mb-3">
+            <input
+              type="text"
+              formControlName="colorFilterText"
+              class="form-control col-9"
+              id="search-color-input"
+              placeholder="Color Name"
+            />
+            <label
+              for="search-brand-input input-group-append"
+              class="col-3 text-muted mx-2 p-0 m-0"
+            >
+              <i class="fas fa-search fa-lg">
+                <span >Search</span>
+              </i></label
+            >
+          </div>
+          <select
+            id="color-input"
+            formControlName="colorId"
+            class="form-select"
+            size="5"
+          >
+            <option
+              *ngFor="
+                let color of colors
+                  | filterColor: this.carAddForm.value['colorFilterText']
+              "
+              value="{{ color.id }}"
+            >
+              {{ color.name }}
+            </option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group mb-3">
+        <label for="daily-price-input" class="fw-bold mb-3">Daily Price</label>
+        <input
+          type="number"
+          formControlName="dailyPrice"
+          id="daily-price-input"
+          class="form-control"
+          placeholder="Daily Price"
+        />
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="min-findeks-score-input" class="fw-bold mb-3"
+          >Minimum Findeks Score</label
+        >
+        <input
+          id="min-findeks-score-input"
+          type="number"
+          formControlName="minFindeksScore"
+          class="form-control"
+          placeholder="Min Findeks Score"
+        />
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="model-year-input" class="fw-bold mb-3">Model Year</label>
+        <input
+          type="number"
+          formControlName="modelYear"
+          id="model-year-input"
+          class="form-control"
+          placeholder="Model Year"
+        />
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="drive-experience-input" class="fw-bold mb-3">Required Drive Experience</label>
+        <input
+          type="number"
+          formControlName="requiredDriveExperience"
+          id="drive-experience-input"
+          class="form-control"
+          placeholder="Required Drive Experience"
+        />
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="description-input" class="fw-bold mb-3">Description</label>
+        <textarea
+          type="text"
+          formControlName="description"
+          id="description-input"
+          class="form-control"
+          placeholder="Description..."
+        ></textarea>
+      </div>
+    </form>
+  </div>
+  <div class="card-footer">
+    <button (click)="add()" class="btn btn-primary btn-lg w-100 shadow-sm">
+      Add Car
+    </button>
+  </div>
+</div>

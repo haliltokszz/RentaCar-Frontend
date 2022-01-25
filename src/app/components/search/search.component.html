@@ -1,0 +1,48 @@
+<div class="bg-primary-gradient col-12 rounded-2 shadow p-3 h-100 position-relative">
+  <form class="row">
+    <div class="col-12 form-group">
+      <label for="pick-up-date-input" class="form-label text-light my-1" 
+        >Pick-up Location:</label
+      >
+      <select class="form-select">
+        <option selected>Choose a location</option>
+        <option value="1">İzmir</option>
+        <option value="2">İstanbul</option>
+        <option value="3">Ankara</option>
+      </select>
+    </div>
+    <div class="col-12 form-group ">
+      <label for="pick-up-date-input" class="form-label text-light my-1"
+        >Pick-up Date:</label
+      >
+      <input
+        class="form-control"
+        type="datetime-local"
+        [value]="DateTimeNow | date: 'yyyy-MM-ddThh:mm'"
+        [(ngModel)]="rentalStartDate"
+        id="pick-up-date-input"
+      />
+    </div>
+    <div class="col-12 form-group">
+      <label for="return-date-input" class="form-label text-light my-1"
+        >Return Date:</label
+      >
+      <input
+        class="form-control"
+        type="datetime-local"
+        [value]="DateTimeNow | date: 'yyyy-MM-ddThh:mm'"
+        [(ngModel)]="rentalEndDate"
+        id="return-date-input"
+      />
+    </div>
+    <div class="col-12 form-group">
+      <button
+        type="button"
+        class="btn btn-primary rounded-1 p-2 position-absolute bottom-0 end-0 me-3 mb-2"
+        [routerLink]="['/cars', { startDate: rentalStartDate, endDate: rentalEndDate }]"
+      >
+        Search
+      </button>
+    </div>
+  </form>
+</div>

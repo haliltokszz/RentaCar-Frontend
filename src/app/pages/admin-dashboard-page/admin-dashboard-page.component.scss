@@ -1,0 +1,11 @@
+@import '../../../styles.scss';
+
+.active {
+  color: #000 !important;
+  background-color: #f8f9fa !important;
+  border-color: #f8f9fa !important;
+}
+
+#sidebar{
+  max-height: 20rem;
+}

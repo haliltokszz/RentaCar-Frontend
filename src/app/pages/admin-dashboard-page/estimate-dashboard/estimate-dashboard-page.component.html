@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+      <div class="col-12 col-md-3" *ngFor="let estimate of estimates">
+          <div class="pricingTable">
+              <div class="pricing_heading">
+                  <h3 class="title">{{estimate.carCategory}}</h3>
+                  <span class="value">
+                      {{estimate.value}}
+                      <span class="month">{{estimate.month}}</span>
+                  </span>
+              </div>
+              <div class="content">
+                  <ul>
+                      <li>Total Rental: {{estimate.totalRent}}</li>
+                      <li>Estimate: {{estimate.value}}</li>
+                      <li>{{estimate.carCategory}}</li>
+                      <li>{{estimate.month}}</li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
